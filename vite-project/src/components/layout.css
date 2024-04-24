@@ -1,0 +1,30 @@
+
+
+.layout-header {
+    width: 100%; 
+}
+
+main {
+    flex: 1; 
+}
+
+.Navbar {
+    width: 100%; 
+}
+
+.Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 1.5rem; 
+}
+
+@media (max-width: 768px) {
+    .Container {
+        padding: 0 15px;
+    }
+}

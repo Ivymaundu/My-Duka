@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.3",
+    "ngrok": "^5.0.0-beta.2",
+    "react-chartjs-2": "^5.2.0",
+    "react-redux": "^9.1.1"
+  }
+}
