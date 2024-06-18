@@ -1,43 +1,37 @@
-import { Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from "./components/layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import MyAccount from "./pages/MyAccount";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Protected from "./pages/ProtectedRoutes";
 import Products from "./pages/Products";
 import Sales from "./pages/Sales";
 import Logout from "./pages/logout";
-import Register from "./pages/Register";
+import RegisterBusiness from "./pages/RegisterBusiness";
+import RegisterUser from "./pages/RegisterUser";
+import Checkout from "./pages/CheckOut.tsx";
 
 
-
-function App(){
-
- 
+function App() {
 
   return (
     <Routes>
-      
-      <Route element={< Layout/>}>
-      
-        <Route path="/" element={< Home />} />
-        <Route path="/about" element={<  About />}/>
-        <Route path="/myaccount" element={< MyAccount />} />
-        <Route path="/register" element={< Register />} />
-       
-        
+
+      <Route path="/login" element={< Login />} />
+      <Route path="/" element={< RegisterBusiness />} />
+      <Route path="/register-user" element={< RegisterUser />} />
+      <Route element={<Protected />}>
+        <Route element={< Navbar />}>
+          <Route path="/products" element={< Products />} />
+          <Route path="/sales" element={< Sales />} />
+          <Route path="/dashboard" element={< Dashboard />} />
+          <Route path="/checkout" element={< Checkout />} />
+          <Route path="/logout" element={<Logout />} />
+
+        </Route>
+
       </Route>
-      <Route element={<Protected/>}>
-        <Route path="/dashboard" element={< Dashboard />} />
-        <Route path="/products" element={< Products />} />
-        <Route path="/sales" element={< Sales />} />
-        <Route path="/logout" element={<Logout />} />
-      </Route>
-      
-    
-      
     </Routes>
   )
 }

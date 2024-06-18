@@ -1,12 +1,12 @@
-import { createStore, combineReducers } from 'redux';
+// import { createStore, combineReducers } from 'redux';
 
 
-const rootReducer = combineReducers({
-    auth:authReducer
-});
+// const rootReducer = combineReducers({
+//     auth:authReducer
+// });
 
-const Store = createStore(
-    rootReducer,
-);
+// const Store = createStore(
+//     rootReducer,
+// );
 
-export default Store;
+// export default Store;
