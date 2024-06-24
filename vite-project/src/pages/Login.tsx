@@ -30,7 +30,7 @@ export default function Login(){
         };
         try {
 
-            const apiUrl = 'http://127.0.0.1:8000/user_login';
+            const apiUrl = 'http://161.35.150.71:8000/user_login';
             const response = await axios.post(apiUrl,
                 { ...formContent }, {
                 headers: {
