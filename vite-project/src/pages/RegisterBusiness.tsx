@@ -27,7 +27,7 @@ export default function RegisterBusiness() {
       return;
     }
         try {
-            const response = await axios.post('http://161.35.150.71:8000/register_company', formData);
+            const response = await axios.post('http://127.0.0.1:5005/register_company', formData);
             console.log('Registration successful:', response.data);
             <Navigate to="/login" />
         } catch (error) {

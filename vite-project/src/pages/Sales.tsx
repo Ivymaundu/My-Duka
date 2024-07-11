@@ -19,7 +19,7 @@ const Products: React.FC = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get<Product[]>('http://127.0.0.1:8000/s');
+                const response = await axios.get<Product[]>('http://127.0.0.1:8000/sales');
                 setProducts(response.data);
                 console.log(response.data)
             } catch (error) {
