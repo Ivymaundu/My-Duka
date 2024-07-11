@@ -26,7 +26,7 @@ export default function RegisterUser() {
       return;
     }
         try {
-            const response = await axios.post('http://127.0.0.1:8000/register_user', formData);
+            const response = await axios.post('http://104.248.192.12:5005/register_user', formData);
             console.log('Registration successful:', response.data);
             <Navigate to="/login" />
         } catch (error) {
