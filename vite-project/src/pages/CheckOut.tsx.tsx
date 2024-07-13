@@ -31,7 +31,7 @@ export default function CheckOut() {
 
     // fetch products from db
     useEffect(() => {
-        axios.get<Product[]>('http://127.0.0.1:8000/products')
+        axios.get<Product[]>('http://188.166.75.70:5005/products')
             .then(response => {
                 setProducts(response.data);
                 console.log(response.data)

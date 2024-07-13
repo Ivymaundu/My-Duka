@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                const apiUrl = "http://104.248.192.12:5005/dashboard";
+                const apiUrl = "http://188.166.75.70:5005/dashboard";
                 const token = localStorage.getItem("token");
                 if (!token) {
                     throw new Error("Access token not found");
