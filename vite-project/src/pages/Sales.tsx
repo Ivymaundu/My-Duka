@@ -4,6 +4,7 @@ import 'datatables.net-dt/css/dataTables.dataTables.min.css';
 import $ from 'jquery';
 import axios from 'axios';
 import '../style/products.css';
+import url from '../config';
 
 interface Product {
     id: number;
@@ -19,7 +20,7 @@ const Products: React.FC = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get<Product[]>('http://188.166.75.70:5005/sales');
+                const response = await axios.get<Product[]>(`${url}/sales`);
                 setProducts(response.data);
                 console.log(response.data)
             } catch (error) {

@@ -3,6 +3,7 @@ import axios from "axios";
 import 'chart.js/auto';
 import { Line, Bar } from "react-chartjs-2";
 import { Container } from 'react-bootstrap';
+import url from "../config";
 
 
 
@@ -27,7 +28,7 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                const apiUrl = "http://188.166.75.70:5005/dashboard";
+                const apiUrl = `${url}/dashboard`;
                 const token = localStorage.getItem("token");
                 if (!token) {
                     throw new Error("Access token not found");

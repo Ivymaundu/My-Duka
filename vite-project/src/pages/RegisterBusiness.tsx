@@ -2,7 +2,7 @@ import '../style/login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-
+import url from '../config';
 
 export default function RegisterBusiness() {
     const [company_name, setCompany_name] = useState<string>('');
@@ -27,7 +27,7 @@ export default function RegisterBusiness() {
       return;
     }
         try {
-            const response = await axios.post('http://188.166.75.70/register_company', formData);
+            const response = await axios.post(`${url}/register_company`, formData);
             console.log('Registration successful:', response.data);
             <Navigate to="/login" />
         } catch (error) {

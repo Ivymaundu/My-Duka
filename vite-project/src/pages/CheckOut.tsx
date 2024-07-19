@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../style/checkout..css'
 import axios from 'axios';
-
+import url from '../config';
 interface Product {
     id: number;
     product_name: string;
@@ -31,7 +31,7 @@ export default function CheckOut() {
 
     // fetch products from db
     useEffect(() => {
-        axios.get<Product[]>('http://188.166.75.70:5005/products')
+        axios.get<Product[]>(`{url}/products`)
             .then(response => {
                 setProducts(response.data);
                 console.log(response.data)

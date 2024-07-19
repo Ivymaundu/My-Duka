@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import GoogleLoginAuth from './GoogleAuth';
+import url from '../config';
 
 interface Authtype {
     email: String,
@@ -30,7 +31,7 @@ export default function Login(){
         };
         try {
 
-            const apiUrl = 'http://188.166.75.70:5005/user_login';
+            const apiUrl = `${url}/user_login`;
             const response = await axios.post(apiUrl,
                 { ...formContent }, {
                 headers: {

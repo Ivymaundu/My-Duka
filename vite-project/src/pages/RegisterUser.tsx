@@ -1,8 +1,8 @@
 import '../style/login.css'
 import { useState } from 'react';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import url from '../config';
 
 export default function RegisterUser() {
     const[full_name, setFull_name] = useState<string>('');
@@ -11,6 +11,8 @@ export default function RegisterUser() {
     const[role,setRole] = useState<string>('');
     const[password,setPassword]= useState<string>('');
     const [company_id, setCompany_id] = useState<number>(0);
+
+    const navigate = useNavigate()
 
     const formData = {
         company_id,
@@ -26,9 +28,9 @@ export default function RegisterUser() {
       return;
     }
         try {
-            const response = await axios.post('http://188.166.75.70:5005/register_user', formData);
+            const response = await axios.post(`${url}/register_user`, formData);
             console.log('Registration successful:', response.data);
-            <Navigate to="/login" />
+            navigate('/login')
         } catch (error) {
             console.error('Input correct format:', error);
         }
