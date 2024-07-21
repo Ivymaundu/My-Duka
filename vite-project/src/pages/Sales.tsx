@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../style/products.css';
 import url from '../config';
 
-interface Product {
+interface Sale {
     id: number;
     product_name: string;
     product_price: number;
@@ -15,13 +15,13 @@ interface Product {
 }
 
 const Products: React.FC = () => {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [sales, setSales] = useState<Sale[]>([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get<Product[]>(`${url}/sales`);
-                setProducts(response.data);
+                const response = await axios.get<Sale[]>(`${url}/sales`);
+                setSales(response.data);
                 console.log(response.data)
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -31,7 +31,7 @@ const Products: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        if (products.length > 0) {
+        if (sales.length > 0) {
             // Destroy the existing DataTable if it exists
             if ($.fn.DataTable.isDataTable('#myTable')) {
                 $('#myTable').DataTable().destroy();
@@ -39,11 +39,11 @@ const Products: React.FC = () => {
 
             // Initialize DataTable
             $('#myTable').DataTable({
-                data: products.map(product => ({
-                    product_name: product.product_name,
-                    product_price: product.product_price,
-                    product_category: product.product_category,
-                    stock_quantity: product.stock_quantity,
+                data: sales.map(sale => ({
+                    product_name: sale.product_name,
+                    product_price: sale.product_price,
+                    product_category: sale.product_category,
+                    stock_quantity: sale.stock_quantity,
             
                 })),
                 columns: [
@@ -55,12 +55,12 @@ const Products: React.FC = () => {
                 ]
             });
         }
-    }, [products]);
+    }, [sales]);
 
     return (
         <div className="d-flex flex-column flex-md-row">
             <div className="flex-grow-1 container-fluid mt-3 mt-md-0">
-                <h1>Products</h1>
+                <h1>Sales</h1>
                 <div className="table-custom">
                     <table id="myTable" className="display table table-striped">
                         <thead>
@@ -73,7 +73,7 @@ const Products: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.length === 0 && (
+                            {sales.length === 0 && (
                                 <tr>
                                     <td colSpan={5} className="text-center">No data available</td>
                                 </tr>
@@ -81,11 +81,7 @@ const Products: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
-                <div id="addproduct">
-                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Add products
-                    </button>
-                </div>
+                
             </div>
         </div>
     );

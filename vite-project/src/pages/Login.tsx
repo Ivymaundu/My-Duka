@@ -4,10 +4,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import GoogleLoginAuth from './GoogleAuth';
 import url from '../config';
+import { notifySuccess, notifyError } from '../NotificationService';
 
 interface Authtype {
-    email: String,
-    password: String
+    email: string,
+    password: string
 }
 
 export default function Login(){
@@ -47,12 +48,18 @@ export default function Login(){
             console.log("responseData.......", responseData)
             localStorage.setItem("token", responseData.access_token)
             localStorage.setItem("full_name", responseData.full_name)
-            let mytoken =localStorage.getItem("token")
-            console.log(mytoken)
-            navigate("/dashboard")
-
-        } catch (error) {
-            console.log('error.......', error)
+            
+            notifySuccess('Login successful! Redirecting to dashboard...');
+            setTimeout(() => {
+                navigate("/dashboard");
+            }, 3000);
+        } catch (error: any) {
+            console.log('error.......', error);
+            if (error.response && error.response.data && error.response.data.message) {
+                notifyError(`Login failed: ${error.response.data.message}`);
+            } else {
+                notifyError('Login failed, check the inputs.');
+            }
         }
     }
 
@@ -74,7 +81,7 @@ export default function Login(){
                 </div>
                 
                 <input type="Submit" className="btn" value={'Login'}/><br></br>
-                <h4 className='mt-3'>Don't have an acccount? <a href="/register-user">Register</a></h4>
+                <h4 className='mt-3'>Don't have an acccount? <a href="/">Register</a></h4>
                 <GoogleLoginAuth/>
             </form>
         </div>

@@ -1,5 +1,67 @@
-.table-custom {
-    width: 60vw;
-    height: 550px;
-    margin-left: 100px;
+/* products.css */
+
+/* Ensure the table container is responsive */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Styling for the container */
+.container3 {
+    padding: 20px;
+}
+
+/* Styling for small screens */
+@media (max-width: 768px) {
+    .container3 {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .table-responsive {
+        margin-top: 10px;
+    }
+
+    table {
+        font-size: 0.8em;
+    }
+
+    /* Hide less important columns on small screens */
+    .table thead th:nth-child(3),
+    .table tbody td:nth-child(3),
+    .table thead th:nth-child(4),
+    .table tbody td:nth-child(4) {
+        display: none;
+    }
+
+    /* Stack table rows */
+    .table tbody td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tbody td::before {
+        content: attr(data-title);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5em;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    table {
+        font-size: 0.7em;
+    }
+
+    th, td {
+        padding: 5px;
+    }
 }

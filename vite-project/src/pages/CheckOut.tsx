@@ -31,7 +31,7 @@ export default function CheckOut() {
 
     // fetch products from db
     useEffect(() => {
-        axios.get<Product[]>(`{url}/products`)
+        axios.get<Product[]>(`${url}/products`)
             .then(response => {
                 setProducts(response.data);
                 console.log(response.data)
